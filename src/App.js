@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar";
 import { calculateTotals, getCartItems } from "./features/cart/cartSlice";
 
 function App() {
-  const { cartItems, isLoading } = useSelector((store) => store.cart);
+  const { cartItems, isLoading, loading } = useSelector((store) => store.cart);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(calculateTotals());
@@ -17,7 +17,6 @@ function App() {
   }, [dispatch]);
 
   const { isOpen } = useSelector((store) => store.modal);
-  const { loading } = useSelector((store) => store.cart);
 
   if (isLoading) {
     return (
